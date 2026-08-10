@@ -1,0 +1,74 @@
+{
+  "status": "COMPLETE",
+  "run": "AL_SSL_INTERACTION_N10_FAST_3H30",
+  "seeds": [
+    42,
+    52,
+    62,
+    72,
+    82,
+    242,
+    252,
+    262,
+    272,
+    282
+  ],
+  "models": [
+    "T0_E2E",
+    "DAPT_E2E"
+  ],
+  "strategies": [
+    "RANDOM_GLOBAL",
+    "UNCERTAINTY_GLOBAL"
+  ],
+  "budgets": [
+    0.1,
+    0.15,
+    0.2,
+    0.25
+  ],
+  "target_fprs": [
+    0.005,
+    0.01,
+    0.02
+  ],
+  "primary": {
+    "metric": "recall",
+    "label_budget": 0.25,
+    "target_fpr": 0.005,
+    "scenarios": [
+      "TEMPORAL",
+      "DOMAIN_OOD",
+      "TEMPLATE_OOD",
+      "DOMAIN_TEMPLATE_OOD"
+    ],
+    "interaction_definition": "(DAPT_UNCERTAINTY-DAPT_RANDOM)-(T0_UNCERTAINTY-T0_RANDOM)"
+  },
+  "reuse": {
+    "dapt_active_learning_retrained": false,
+    "dapt_source": "/kaggle/input/datasets/sophiahofmann/lpppll",
+    "t0_newly_trained": true,
+    "random_label_indices_identical_between_T0_and_DAPT": true,
+    "initial_10pct_identical_across_strategies_and_models": true
+  },
+  "checks": {
+    "expected_t0_state_files": 50,
+    "actual_t0_state_files": 50,
+    "result_rows": 720,
+    "statistics_rows": 324,
+    "primary_positive_all4": true,
+    "primary_ci_positive_all4": false,
+    "primary_holm_significant_all4": false
+  },
+  "stress_mean_25pct_interaction": {
+    "mean_difference": 0.0507529547599477,
+    "ci95_low": -0.04383814353039576,
+    "ci95_high": 0.14534405305029116,
+    "exact_signflip_p_two_sided": 0.25,
+    "wins": 7.0,
+    "ties": 0.0,
+    "losses": 3.0
+  },
+  "automatic_reading": "DESCRIPTIVE_ONLY: Die Interaktion ist im Stressmittel positiv, aber statistisch nicht hinreichend abgesichert. Active Learning darf nicht als nachgewiesener SSL-Verst\u00e4rker formuliert werden.",
+  "scientific_boundary": "Positive interaction supports the investigated DAPT + uncertainty-sampling combination; it does not by itself prove that DAPT causally improves uncertainty calibration."
+}
