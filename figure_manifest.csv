@@ -1,0 +1,4 @@
+figure,purpose,png,pdf
+FIG01_SSL_refresh_direct_recall,DAPT static vs zusätzlicher MLM-Refresh,FIG01_SSL_refresh_direct_recall.png,FIG01_SSL_refresh_direct_recall.pdf
+FIG02_SSL_refresh_assisted_recall,Einfluss des SSL-Refresh auf die Kaskade,FIG02_SSL_refresh_assisted_recall.png,FIG02_SSL_refresh_assisted_recall.pdf
+FIG03_productive_feedback_loop,Active-Learning-Feedback im Gesamtsystem,FIG03_productive_feedback_loop.png,FIG03_productive_feedback_loop.pdf

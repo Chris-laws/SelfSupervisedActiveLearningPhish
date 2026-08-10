@@ -1,0 +1,923 @@
+7.5s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.5s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.5s 3 0.00s - to python to disable frozen modules.
+7.5s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+8.1s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.1s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.1s 7 0.00s - to python to disable frozen modules.
+8.1s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+37.2s 9 {'torch': '2.10.0+cu128', 'cuda': True, 'gpu': 'Tesla T4', 'output': '/kaggle/working/phreshphish_final_freeze_output'}
+39.9s 10 {
+39.9s 11 "split_cache": "/kaggle/input/datasets/sophiahofmann/endgame/split_roles_and_holdout_cache_v2_ram_safe.pkl",
+39.9s 12 "dapt_bundle": "/kaggle/input/datasets/sophiahofmann/endgame/dapt40k_bundle.pkl",
+39.9s 13 "base_model": "/kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base",
+39.9s 14 "dapt_encoders": {
+39.9s 15 "42": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42",
+39.9s 16 "52": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52",
+39.9s 17 "62": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62",
+39.9s 18 "72": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72",
+39.9s 19 "82": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82"
+39.9s 20 }
+39.9s 21 }
+41.0s 22 {'dapt_bundle_top_keys': ['config_signature', 'dapt_pool_signature', 'pretrain_large_df', 'final_holdout_clean', 'dapt_large_audit', 'split_meta', 'holdout_audit'], 'dapt_frame_rows': 40000, 'dapt_frame_columns': ['text', 'template_hash', 'simhash64', 'sha256', 'url_hash', 'text_hash', 'domain', 'label', 'date'], 'dapt_holdout_rows': 8000, 'dapt_holdout_columns': ['text', 'features', 'template_hash', 'simhash64', 'sha256', 'url', 'url_hash', 'text_hash', 'domain', 'label', 'date', 'template_seen_in_development', 'near_duplicate_to_development', 'min_simhash_distance_to_development']}
+41.0s 23 {'train': 4000, 'validation_original': 4358, 'holdout': 8000, 'dapt_unlabeled': 40000, 'train_labels': {0: 2000, 1: 2000}, 'validation_labels': {0: 2847, 1: 1511}, 'holdout_labels': {0: 4000, 1: 4000}}
+41.1s 24 {'near_duplicate_flags_source': 'dapt40k_bundle/final_holdout_clean'}
+41.1s 25 FINAL-FREEZE scenario audit (40k-aware):
+41.1s 26 {
+41.1s 27 "final_temporal_balanced": {
+41.1s 28 "freeze_expected_n": 8000,
+41.1s 29 "actual_n": 8000,
+41.1s 30 "historical_n": 8000,
+41.1s 31 "delta_vs_historical": 0,
+41.1s 32 "benign": 4000,
+41.1s 33 "phish": 4000,
+41.1s 34 "matches_freeze_n": true,
+41.1s 35 "balanced": true
+41.1s 36 },
+41.1s 37 "new_domain_balanced": {
+41.1s 38 "freeze_expected_n": 3858,
+41.1s 39 "actual_n": 3858,
+41.1s 40 "historical_n": 3984,
+41.1s 41 "delta_vs_historical": -126,
+41.1s 42 "benign": 1929,
+41.1s 43 "phish": 1929,
+41.1s 44 "matches_freeze_n": true,
+41.1s 45 "balanced": true
+41.1s 46 },
+41.1s 47 "template_disjoint_balanced": {
+41.1s 48 "freeze_expected_n": 6832,
+41.1s 49 "actual_n": 6832,
+41.1s 50 "historical_n": 6832,
+41.1s 51 "delta_vs_historical": 0,
+41.1s 52 "benign": 3416,
+41.1s 53 "phish": 3416,
+41.1s 54 "matches_freeze_n": true,
+41.1s 55 "balanced": true
+41.1s 56 },
+41.1s 57 "domain_template_disjoint_balanced": {
+41.1s 58 "freeze_expected_n": 3708,
+41.1s 59 "actual_n": 3708,
+41.1s 60 "historical_n": 3822,
+41.1s 61 "delta_vs_historical": -114,
+41.1s 62 "benign": 1854,
+41.1s 63 "phish": 1854,
+41.1s 64 "matches_freeze_n": true,
+41.1s 65 "balanced": true
+41.1s 66 }
+41.1s 67 }
+41.1s 68 scenario  source    n  benign  phish
+41.1s 69 IID     iid 3051    1993   1058
+41.1s 70 TEMPORAL holdout 8000    4000   4000
+41.1s 71 DOMAIN_OOD holdout 3858    1929   1929
+41.1s 72 TEMPLATE_OOD holdout 6832    3416   3416
+41.1s 73 DOMAIN_TEMPLATE_OOD holdout 3708    1854   1854
+41.1s 74 {'calibration_n': 1307, 'iid_n': 3051, 'development_unique_domains': 17955, 'development_unique_templates': 33106, 'holdout_near_duplicates': 330}
+55.0s 75 {'tokenizing': 'pretrain_40k', 'done': 40000, 'total': 40000}
+56.4s 76 {'tokenizing': 'train_4k', 'done': 4000, 'total': 4000}
+57.1s 77 {'tokenizing': 'calibration', 'done': 1307, 'total': 1307}
+58.3s 78 {'tokenizing': 'iid_test', 'done': 3051, 'total': 3051}
+61.8s 79 {'tokenizing': 'holdout_8k', 'done': 8000, 'total': 8000}
+61.8s 80 {'pretrain': {'input_ids': [40000, 256], 'attention_mask': [40000, 256], 'labels': None}, 'train': {'input_ids': [4000, 256], 'attention_mask': [4000, 256], 'labels': [4000]}, 'calibration': {'input_ids': [1307, 256], 'attention_mask': [1307, 256], 'labels': [1307]}, 'iid': {'input_ids': [3051, 256], 'attention_mask': [3051, 256], 'labels': [3051]}, 'holdout': {'input_ids': [8000, 256], 'attention_mask': [8000, 256], 'labels': [8000]}}
+64.2s 81 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+64.2s 82 Key                             | Status     |
+64.2s 83 --------------------------------+------------+-
+64.2s 84 lm_head.bias                    | UNEXPECTED |
+64.2s 85 lm_head.layer_norm.bias         | UNEXPECTED |
+64.2s 86 lm_head.dense.bias              | UNEXPECTED |
+64.2s 87 lm_head.dense.weight            | UNEXPECTED |
+64.2s 88 roberta.embeddings.position_ids | UNEXPECTED |
+64.2s 89 lm_head.layer_norm.weight       | UNEXPECTED |
+64.2s 90 pooler.dense.bias               | MISSING    |
+64.2s 91 pooler.dense.weight             | MISSING    |
+64.2s 92 
+64.2s 93 Notes:
+64.2s 94 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+64.2s 95 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+64.2s 96 
+64.2s 97 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+64.2s 98 Key                             | Status     |
+64.2s 99 --------------------------------+------------+-
+64.2s 100 lm_head.bias                    | UNEXPECTED |
+64.2s 101 lm_head.layer_norm.bias         | UNEXPECTED |
+64.2s 102 lm_head.dense.bias              | UNEXPECTED |
+64.2s 103 lm_head.dense.weight            | UNEXPECTED |
+64.2s 104 roberta.embeddings.position_ids | UNEXPECTED |
+64.2s 105 lm_head.layer_norm.weight       | UNEXPECTED |
+64.2s 106 pooler.dense.bias               | MISSING    |
+64.2s 107 pooler.dense.weight             | MISSING    |
+64.2s 108 
+64.2s 109 Notes:
+64.2s 110 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+64.2s 111 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+106.4s 112 {'seed': 42, 'epoch': 1, 'step': 100, 'loss': 0.51562}
+143.9s 113 {'seed': 42, 'epoch': 1, 'step': 200, 'loss': 0.26053}
+184.7s 114 {'seed': 42, 'epoch': 1, 'step': 300, 'loss': 0.17402}
+226.4s 115 {'seed': 42, 'epoch': 1, 'step': 400, 'loss': 0.13121}
+267.5s 116 {'seed': 42, 'epoch': 1, 'step': 500, 'loss': 0.10548}
+310.7s 117 {'seed': 42, 'epoch': 1, 'step': 600, 'loss': 0.08816}
+352.0s 118 {'seed': 42, 'epoch': 1, 'step': 700, 'loss': 0.076}
+393.3s 119 {'seed': 42, 'epoch': 1, 'step': 800, 'loss': 0.06655}
+434.5s 120 {'seed': 42, 'epoch': 1, 'step': 900, 'loss': 0.0592}
+475.7s 121 {'seed': 42, 'epoch': 1, 'step': 1000, 'loss': 0.05348}
+519.8s 122 {'seed': 42, 'epoch': 1, 'step': 1100, 'loss': 0.04863}
+560.8s 123 {'seed': 42, 'epoch': 1, 'step': 1200, 'loss': 0.04467}
+601.8s 124 {'seed': 42, 'epoch': 1, 'step': 1300, 'loss': 0.04124}
+642.9s 125 {'seed': 42, 'epoch': 1, 'step': 1400, 'loss': 0.03831}
+684.2s 126 {'seed': 42, 'epoch': 1, 'step': 1500, 'loss': 0.03576}
+728.1s 127 {'seed': 42, 'epoch': 1, 'step': 1600, 'loss': 0.03354}
+769.3s 128 {'seed': 42, 'epoch': 1, 'step': 1700, 'loss': 0.03157}
+810.1s 129 {'seed': 42, 'epoch': 1, 'step': 1800, 'loss': 0.02983}
+851.0s 130 {'seed': 42, 'epoch': 1, 'step': 1900, 'loss': 0.02827}
+892.2s 131 {'seed': 42, 'epoch': 1, 'step': 2000, 'loss': 0.02686}
+936.8s 132 {'seed': 42, 'epoch': 1, 'step': 2100, 'loss': 0.02559}
+978.0s 133 {'seed': 42, 'epoch': 1, 'step': 2200, 'loss': 0.02443}
+1019.0s 134 {'seed': 42, 'epoch': 1, 'step': 2300, 'loss': 0.02337}
+1059.9s 135 {'seed': 42, 'epoch': 1, 'step': 2400, 'loss': 0.0224}
+1100.9s 136 {'seed': 42, 'epoch': 1, 'step': 2500, 'loss': 0.0215}
+1105.5s 137 {'contrastive_seed': 42, 'status': 'COMPLETE', 'path': '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_42'}
+1106.2s 138 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+1106.2s 139 Key                             | Status     |
+1106.2s 140 --------------------------------+------------+-
+1106.2s 141 lm_head.bias                    | UNEXPECTED |
+1106.2s 142 lm_head.layer_norm.bias         | UNEXPECTED |
+1106.2s 143 lm_head.dense.bias              | UNEXPECTED |
+1106.2s 144 lm_head.dense.weight            | UNEXPECTED |
+1106.2s 145 roberta.embeddings.position_ids | UNEXPECTED |
+1106.2s 146 lm_head.layer_norm.weight       | UNEXPECTED |
+1106.2s 147 pooler.dense.bias               | MISSING    |
+1106.2s 148 pooler.dense.weight             | MISSING    |
+1106.2s 149 
+1106.2s 150 Notes:
+1106.2s 151 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+1106.2s 152 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+1106.2s 153 
+1106.2s 154 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+1106.2s 155 Key                             | Status     |
+1106.2s 156 --------------------------------+------------+-
+1106.2s 157 lm_head.bias                    | UNEXPECTED |
+1106.2s 158 lm_head.layer_norm.bias         | UNEXPECTED |
+1106.2s 159 lm_head.dense.bias              | UNEXPECTED |
+1106.2s 160 lm_head.dense.weight            | UNEXPECTED |
+1106.2s 161 roberta.embeddings.position_ids | UNEXPECTED |
+1106.2s 162 lm_head.layer_norm.weight       | UNEXPECTED |
+1106.2s 163 pooler.dense.bias               | MISSING    |
+1106.2s 164 pooler.dense.weight             | MISSING    |
+1106.2s 165 
+1106.2s 166 Notes:
+1106.2s 167 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+1106.2s 168 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+1148.9s 169 {'seed': 52, 'epoch': 1, 'step': 100, 'loss': 0.54701}
+1190.0s 170 {'seed': 52, 'epoch': 1, 'step': 200, 'loss': 0.27509}
+1231.5s 171 {'seed': 52, 'epoch': 1, 'step': 300, 'loss': 0.18471}
+1272.9s 172 {'seed': 52, 'epoch': 1, 'step': 400, 'loss': 0.13954}
+1314.2s 173 {'seed': 52, 'epoch': 1, 'step': 500, 'loss': 0.1119}
+1357.3s 174 {'seed': 52, 'epoch': 1, 'step': 600, 'loss': 0.09377}
+1398.6s 175 {'seed': 52, 'epoch': 1, 'step': 700, 'loss': 0.08043}
+1439.7s 176 {'seed': 52, 'epoch': 1, 'step': 800, 'loss': 0.0704}
+1480.6s 177 {'seed': 52, 'epoch': 1, 'step': 900, 'loss': 0.06261}
+1521.5s 178 {'seed': 52, 'epoch': 1, 'step': 1000, 'loss': 0.05638}
+1566.0s 179 {'seed': 52, 'epoch': 1, 'step': 1100, 'loss': 0.05132}
+1607.1s 180 {'seed': 52, 'epoch': 1, 'step': 1200, 'loss': 0.04717}
+1648.1s 181 {'seed': 52, 'epoch': 1, 'step': 1300, 'loss': 0.04356}
+1689.1s 182 {'seed': 52, 'epoch': 1, 'step': 1400, 'loss': 0.04046}
+1730.2s 183 {'seed': 52, 'epoch': 1, 'step': 1500, 'loss': 0.03777}
+1774.5s 184 {'seed': 52, 'epoch': 1, 'step': 1600, 'loss': 0.03541}
+1815.5s 185 {'seed': 52, 'epoch': 1, 'step': 1700, 'loss': 0.03334}
+1856.4s 186 {'seed': 52, 'epoch': 1, 'step': 1800, 'loss': 0.0315}
+1897.3s 187 {'seed': 52, 'epoch': 1, 'step': 1900, 'loss': 0.02984}
+1938.7s 188 {'seed': 52, 'epoch': 1, 'step': 2000, 'loss': 0.02837}
+1982.8s 189 {'seed': 52, 'epoch': 1, 'step': 2100, 'loss': 0.02702}
+2023.9s 190 {'seed': 52, 'epoch': 1, 'step': 2200, 'loss': 0.02579}
+2065.0s 191 {'seed': 52, 'epoch': 1, 'step': 2300, 'loss': 0.02467}
+2106.0s 192 {'seed': 52, 'epoch': 1, 'step': 2400, 'loss': 0.02365}
+2147.0s 193 {'seed': 52, 'epoch': 1, 'step': 2500, 'loss': 0.02271}
+2152.1s 194 {'contrastive_seed': 52, 'status': 'COMPLETE', 'path': '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_52'}
+2152.8s 195 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+2152.8s 196 Key                             | Status     |
+2152.8s 197 --------------------------------+------------+-
+2152.8s 198 lm_head.bias                    | UNEXPECTED |
+2152.8s 199 lm_head.layer_norm.bias         | UNEXPECTED |
+2152.8s 200 lm_head.dense.bias              | UNEXPECTED |
+2152.8s 201 lm_head.dense.weight            | UNEXPECTED |
+2152.8s 202 roberta.embeddings.position_ids | UNEXPECTED |
+2152.8s 203 lm_head.layer_norm.weight       | UNEXPECTED |
+2152.8s 204 pooler.dense.bias               | MISSING    |
+2152.8s 205 pooler.dense.weight             | MISSING    |
+2152.8s 206 
+2152.8s 207 Notes:
+2152.8s 208 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+2152.8s 209 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2152.8s 210 
+2152.8s 211 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+2152.8s 212 Key                             | Status     |
+2152.8s 213 --------------------------------+------------+-
+2152.8s 214 lm_head.bias                    | UNEXPECTED |
+2152.8s 215 lm_head.layer_norm.bias         | UNEXPECTED |
+2152.8s 216 lm_head.dense.bias              | UNEXPECTED |
+2152.8s 217 lm_head.dense.weight            | UNEXPECTED |
+2152.8s 218 roberta.embeddings.position_ids | UNEXPECTED |
+2152.8s 219 lm_head.layer_norm.weight       | UNEXPECTED |
+2152.8s 220 pooler.dense.bias               | MISSING    |
+2152.8s 221 pooler.dense.weight             | MISSING    |
+2152.8s 222 
+2152.8s 223 Notes:
+2152.8s 224 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+2152.8s 225 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2195.3s 226 {'seed': 62, 'epoch': 1, 'step': 100, 'loss': 0.4891}
+2236.5s 227 {'seed': 62, 'epoch': 1, 'step': 200, 'loss': 0.24723}
+2277.9s 228 {'seed': 62, 'epoch': 1, 'step': 300, 'loss': 0.1672}
+2319.3s 229 {'seed': 62, 'epoch': 1, 'step': 400, 'loss': 0.12633}
+2360.6s 230 {'seed': 62, 'epoch': 1, 'step': 500, 'loss': 0.10179}
+2403.9s 231 {'seed': 62, 'epoch': 1, 'step': 600, 'loss': 0.08565}
+2445.2s 232 {'seed': 62, 'epoch': 1, 'step': 700, 'loss': 0.07353}
+2486.5s 233 {'seed': 62, 'epoch': 1, 'step': 800, 'loss': 0.06436}
+2527.7s 234 {'seed': 62, 'epoch': 1, 'step': 900, 'loss': 0.05731}
+2569.0s 235 {'seed': 62, 'epoch': 1, 'step': 1000, 'loss': 0.05161}
+2613.3s 236 {'seed': 62, 'epoch': 1, 'step': 1100, 'loss': 0.04697}
+2654.5s 237 {'seed': 62, 'epoch': 1, 'step': 1200, 'loss': 0.04309}
+2695.4s 238 {'seed': 62, 'epoch': 1, 'step': 1300, 'loss': 0.03982}
+2736.4s 239 {'seed': 62, 'epoch': 1, 'step': 1400, 'loss': 0.03698}
+2777.4s 240 {'seed': 62, 'epoch': 1, 'step': 1500, 'loss': 0.03453}
+2821.5s 241 {'seed': 62, 'epoch': 1, 'step': 1600, 'loss': 0.03242}
+2862.8s 242 {'seed': 62, 'epoch': 1, 'step': 1700, 'loss': 0.03053}
+2903.6s 243 {'seed': 62, 'epoch': 1, 'step': 1800, 'loss': 0.02884}
+2944.6s 244 {'seed': 62, 'epoch': 1, 'step': 1900, 'loss': 0.02733}
+2985.8s 245 {'seed': 62, 'epoch': 1, 'step': 2000, 'loss': 0.02597}
+3029.8s 246 {'seed': 62, 'epoch': 1, 'step': 2100, 'loss': 0.02474}
+3070.9s 247 {'seed': 62, 'epoch': 1, 'step': 2200, 'loss': 0.02363}
+3111.8s 248 {'seed': 62, 'epoch': 1, 'step': 2300, 'loss': 0.02264}
+3152.8s 249 {'seed': 62, 'epoch': 1, 'step': 2400, 'loss': 0.0217}
+3194.0s 250 {'seed': 62, 'epoch': 1, 'step': 2500, 'loss': 0.02083}
+3198.1s 251 {'contrastive_seed': 62, 'status': 'COMPLETE', 'path': '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_62'}
+3198.8s 252 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+3198.8s 253 Key                             | Status     |
+3198.8s 254 --------------------------------+------------+-
+3198.8s 255 lm_head.bias                    | UNEXPECTED |
+3198.8s 256 lm_head.layer_norm.bias         | UNEXPECTED |
+3198.8s 257 lm_head.dense.bias              | UNEXPECTED |
+3198.8s 258 lm_head.dense.weight            | UNEXPECTED |
+3198.8s 259 roberta.embeddings.position_ids | UNEXPECTED |
+3198.8s 260 lm_head.layer_norm.weight       | UNEXPECTED |
+3198.8s 261 pooler.dense.bias               | MISSING    |
+3198.8s 262 pooler.dense.weight             | MISSING    |
+3198.8s 263 
+3198.8s 264 Notes:
+3198.8s 265 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+3198.8s 266 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+3198.8s 267 
+3198.8s 268 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+3198.8s 269 Key                             | Status     |
+3198.8s 270 --------------------------------+------------+-
+3198.8s 271 lm_head.bias                    | UNEXPECTED |
+3198.8s 272 lm_head.layer_norm.bias         | UNEXPECTED |
+3198.8s 273 lm_head.dense.bias              | UNEXPECTED |
+3198.8s 274 lm_head.dense.weight            | UNEXPECTED |
+3198.8s 275 roberta.embeddings.position_ids | UNEXPECTED |
+3198.8s 276 lm_head.layer_norm.weight       | UNEXPECTED |
+3198.8s 277 pooler.dense.bias               | MISSING    |
+3198.8s 278 pooler.dense.weight             | MISSING    |
+3198.8s 279 
+3198.8s 280 Notes:
+3198.8s 281 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+3198.8s 282 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+3241.2s 283 {'seed': 72, 'epoch': 1, 'step': 100, 'loss': 0.50068}
+3282.6s 284 {'seed': 72, 'epoch': 1, 'step': 200, 'loss': 0.25341}
+3324.0s 285 {'seed': 72, 'epoch': 1, 'step': 300, 'loss': 0.1695}
+3365.6s 286 {'seed': 72, 'epoch': 1, 'step': 400, 'loss': 0.12743}
+3407.1s 287 {'seed': 72, 'epoch': 1, 'step': 500, 'loss': 0.10203}
+3450.3s 288 {'seed': 72, 'epoch': 1, 'step': 600, 'loss': 0.08508}
+3491.9s 289 {'seed': 72, 'epoch': 1, 'step': 700, 'loss': 0.07305}
+3533.3s 290 {'seed': 72, 'epoch': 1, 'step': 800, 'loss': 0.06402}
+3574.7s 291 {'seed': 72, 'epoch': 1, 'step': 900, 'loss': 0.05693}
+3616.1s 292 {'seed': 72, 'epoch': 1, 'step': 1000, 'loss': 0.05126}
+3660.2s 293 {'seed': 72, 'epoch': 1, 'step': 1100, 'loss': 0.04663}
+3701.2s 294 {'seed': 72, 'epoch': 1, 'step': 1200, 'loss': 0.04276}
+3742.2s 295 {'seed': 72, 'epoch': 1, 'step': 1300, 'loss': 0.03947}
+3783.4s 296 {'seed': 72, 'epoch': 1, 'step': 1400, 'loss': 0.03666}
+3824.7s 297 {'seed': 72, 'epoch': 1, 'step': 1500, 'loss': 0.03423}
+3868.7s 298 {'seed': 72, 'epoch': 1, 'step': 1600, 'loss': 0.03214}
+3910.0s 299 {'seed': 72, 'epoch': 1, 'step': 1700, 'loss': 0.03028}
+3950.9s 300 {'seed': 72, 'epoch': 1, 'step': 1800, 'loss': 0.02861}
+3991.9s 301 {'seed': 72, 'epoch': 1, 'step': 1900, 'loss': 0.02711}
+4033.2s 302 {'seed': 72, 'epoch': 1, 'step': 2000, 'loss': 0.02576}
+4077.1s 303 {'seed': 72, 'epoch': 1, 'step': 2100, 'loss': 0.02458}
+4118.4s 304 {'seed': 72, 'epoch': 1, 'step': 2200, 'loss': 0.02347}
+4159.5s 305 {'seed': 72, 'epoch': 1, 'step': 2300, 'loss': 0.02245}
+4200.6s 306 {'seed': 72, 'epoch': 1, 'step': 2400, 'loss': 0.02152}
+4241.8s 307 {'seed': 72, 'epoch': 1, 'step': 2500, 'loss': 0.02066}
+4246.5s 308 {'contrastive_seed': 72, 'status': 'COMPLETE', 'path': '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_72'}
+4247.2s 309 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+4247.2s 310 Key                             | Status     |
+4247.2s 311 --------------------------------+------------+-
+4247.2s 312 lm_head.bias                    | UNEXPECTED |
+4247.2s 313 lm_head.layer_norm.bias         | UNEXPECTED |
+4247.2s 314 lm_head.dense.bias              | UNEXPECTED |
+4247.2s 315 lm_head.dense.weight            | UNEXPECTED |
+4247.2s 316 roberta.embeddings.position_ids | UNEXPECTED |
+4247.2s 317 lm_head.layer_norm.weight       | UNEXPECTED |
+4247.2s 318 pooler.dense.bias               | MISSING    |
+4247.2s 319 pooler.dense.weight             | MISSING    |
+4247.2s 320 
+4247.2s 321 Notes:
+4247.2s 322 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+4247.2s 323 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+4247.2s 324 
+4247.2s 325 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+4247.2s 326 Key                             | Status     |
+4247.2s 327 --------------------------------+------------+-
+4247.2s 328 lm_head.bias                    | UNEXPECTED |
+4247.2s 329 lm_head.layer_norm.bias         | UNEXPECTED |
+4247.2s 330 lm_head.dense.bias              | UNEXPECTED |
+4247.2s 331 lm_head.dense.weight            | UNEXPECTED |
+4247.2s 332 roberta.embeddings.position_ids | UNEXPECTED |
+4247.2s 333 lm_head.layer_norm.weight       | UNEXPECTED |
+4247.2s 334 pooler.dense.bias               | MISSING    |
+4247.2s 335 pooler.dense.weight             | MISSING    |
+4247.2s 336 
+4247.2s 337 Notes:
+4247.2s 338 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+4247.2s 339 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+4289.7s 340 {'seed': 82, 'epoch': 1, 'step': 100, 'loss': 0.54974}
+4330.7s 341 {'seed': 82, 'epoch': 1, 'step': 200, 'loss': 0.2784}
+4372.2s 342 {'seed': 82, 'epoch': 1, 'step': 300, 'loss': 0.18731}
+4413.5s 343 {'seed': 82, 'epoch': 1, 'step': 400, 'loss': 0.14061}
+4454.8s 344 {'seed': 82, 'epoch': 1, 'step': 500, 'loss': 0.11307}
+4497.9s 345 {'seed': 82, 'epoch': 1, 'step': 600, 'loss': 0.09463}
+4539.0s 346 {'seed': 82, 'epoch': 1, 'step': 700, 'loss': 0.08134}
+4580.0s 347 {'seed': 82, 'epoch': 1, 'step': 800, 'loss': 0.07127}
+4621.0s 348 {'seed': 82, 'epoch': 1, 'step': 900, 'loss': 0.06342}
+4661.9s 349 {'seed': 82, 'epoch': 1, 'step': 1000, 'loss': 0.05714}
+4705.8s 350 {'seed': 82, 'epoch': 1, 'step': 1100, 'loss': 0.05198}
+4746.8s 351 {'seed': 82, 'epoch': 1, 'step': 1200, 'loss': 0.04766}
+4787.6s 352 {'seed': 82, 'epoch': 1, 'step': 1300, 'loss': 0.044}
+4828.6s 353 {'seed': 82, 'epoch': 1, 'step': 1400, 'loss': 0.04088}
+4869.8s 354 {'seed': 82, 'epoch': 1, 'step': 1500, 'loss': 0.03817}
+4913.6s 355 {'seed': 82, 'epoch': 1, 'step': 1600, 'loss': 0.0358}
+4954.7s 356 {'seed': 82, 'epoch': 1, 'step': 1700, 'loss': 0.0337}
+4995.6s 357 {'seed': 82, 'epoch': 1, 'step': 1800, 'loss': 0.03183}
+5036.5s 358 {'seed': 82, 'epoch': 1, 'step': 1900, 'loss': 0.03017}
+5077.8s 359 {'seed': 82, 'epoch': 1, 'step': 2000, 'loss': 0.02867}
+5121.5s 360 {'seed': 82, 'epoch': 1, 'step': 2100, 'loss': 0.02732}
+5162.9s 361 {'seed': 82, 'epoch': 1, 'step': 2200, 'loss': 0.02609}
+5204.1s 362 {'seed': 82, 'epoch': 1, 'step': 2300, 'loss': 0.02497}
+5245.3s 363 {'seed': 82, 'epoch': 1, 'step': 2400, 'loss': 0.02395}
+5286.5s 364 {'seed': 82, 'epoch': 1, 'step': 2500, 'loss': 0.02305}
+5291.1s 365 {'contrastive_seed': 82, 'status': 'COMPLETE', 'path': '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_82'}
+5291.1s 366 {42: '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_42', 52: '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_52', 62: '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_62', 72: '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_72', 82: '/kaggle/working/phreshphish_final_freeze_output/contrastive_encoders/seed_82'}
+5291.6s 367 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5291.6s 368 Key                             | Status     |
+5291.6s 369 --------------------------------+------------+-
+5291.6s 370 lm_head.bias                    | UNEXPECTED |
+5291.6s 371 lm_head.layer_norm.bias         | UNEXPECTED |
+5291.6s 372 lm_head.dense.bias              | UNEXPECTED |
+5291.6s 373 lm_head.dense.weight            | UNEXPECTED |
+5291.6s 374 roberta.embeddings.position_ids | UNEXPECTED |
+5291.6s 375 lm_head.layer_norm.weight       | UNEXPECTED |
+5291.6s 376 pooler.dense.bias               | MISSING    |
+5291.6s 377 pooler.dense.weight             | MISSING    |
+5291.6s 378 
+5291.6s 379 Notes:
+5291.6s 380 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5291.6s 381 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5291.6s 382 
+5291.6s 383 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5291.6s 384 Key                             | Status     |
+5291.6s 385 --------------------------------+------------+-
+5291.6s 386 lm_head.bias                    | UNEXPECTED |
+5291.6s 387 lm_head.layer_norm.bias         | UNEXPECTED |
+5291.6s 388 lm_head.dense.bias              | UNEXPECTED |
+5291.6s 389 lm_head.dense.weight            | UNEXPECTED |
+5291.6s 390 roberta.embeddings.position_ids | UNEXPECTED |
+5291.6s 391 lm_head.layer_norm.weight       | UNEXPECTED |
+5291.6s 392 pooler.dense.bias               | MISSING    |
+5291.6s 393 pooler.dense.weight             | MISSING    |
+5291.6s 394 
+5291.6s 395 Notes:
+5291.6s 396 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5291.6s 397 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5306.3s 398 {'embedding': 'BASE', 'seed': 42, 'split': 'train', 'n': 4000}
+5306.7s 399 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5306.7s 400 Key                             | Status     |
+5306.7s 401 --------------------------------+------------+-
+5306.7s 402 lm_head.bias                    | UNEXPECTED |
+5306.7s 403 lm_head.layer_norm.bias         | UNEXPECTED |
+5306.7s 404 lm_head.dense.bias              | UNEXPECTED |
+5306.7s 405 lm_head.dense.weight            | UNEXPECTED |
+5306.7s 406 roberta.embeddings.position_ids | UNEXPECTED |
+5306.7s 407 lm_head.layer_norm.weight       | UNEXPECTED |
+5306.7s 408 pooler.dense.bias               | MISSING    |
+5306.7s 409 pooler.dense.weight             | MISSING    |
+5306.7s 410 
+5306.7s 411 Notes:
+5306.7s 412 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5306.7s 413 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5306.7s 414 
+5306.7s 415 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5306.7s 416 Key                             | Status     |
+5306.7s 417 --------------------------------+------------+-
+5306.7s 418 lm_head.bias                    | UNEXPECTED |
+5306.7s 419 lm_head.layer_norm.bias         | UNEXPECTED |
+5306.7s 420 lm_head.dense.bias              | UNEXPECTED |
+5306.7s 421 lm_head.dense.weight            | UNEXPECTED |
+5306.7s 422 roberta.embeddings.position_ids | UNEXPECTED |
+5306.7s 423 lm_head.layer_norm.weight       | UNEXPECTED |
+5306.7s 424 pooler.dense.bias               | MISSING    |
+5306.7s 425 pooler.dense.weight             | MISSING    |
+5306.7s 426 
+5306.7s 427 Notes:
+5306.7s 428 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5306.7s 429 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5312.0s 430 {'embedding': 'BASE', 'seed': 42, 'split': 'calibration', 'n': 1307}
+5312.4s 431 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5312.4s 432 Key                             | Status     |
+5312.4s 433 --------------------------------+------------+-
+5312.4s 434 lm_head.bias                    | UNEXPECTED |
+5312.4s 435 lm_head.layer_norm.bias         | UNEXPECTED |
+5312.4s 436 lm_head.dense.bias              | UNEXPECTED |
+5312.4s 437 lm_head.dense.weight            | UNEXPECTED |
+5312.4s 438 roberta.embeddings.position_ids | UNEXPECTED |
+5312.4s 439 lm_head.layer_norm.weight       | UNEXPECTED |
+5312.4s 440 pooler.dense.bias               | MISSING    |
+5312.4s 441 pooler.dense.weight             | MISSING    |
+5312.4s 442 
+5312.4s 443 Notes:
+5312.4s 444 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5312.4s 445 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5312.4s 446 
+5312.4s 447 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5312.4s 448 Key                             | Status     |
+5312.4s 449 --------------------------------+------------+-
+5312.4s 450 lm_head.bias                    | UNEXPECTED |
+5312.4s 451 lm_head.layer_norm.bias         | UNEXPECTED |
+5312.4s 452 lm_head.dense.bias              | UNEXPECTED |
+5312.4s 453 lm_head.dense.weight            | UNEXPECTED |
+5312.4s 454 roberta.embeddings.position_ids | UNEXPECTED |
+5312.4s 455 lm_head.layer_norm.weight       | UNEXPECTED |
+5312.4s 456 pooler.dense.bias               | MISSING    |
+5312.4s 457 pooler.dense.weight             | MISSING    |
+5312.4s 458 
+5312.4s 459 Notes:
+5312.4s 460 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5312.4s 461 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5325.7s 462 {'embedding': 'BASE', 'seed': 42, 'split': 'iid', 'n': 3051}
+5326.1s 463 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5326.1s 464 Key                             | Status     |
+5326.1s 465 --------------------------------+------------+-
+5326.1s 466 lm_head.bias                    | UNEXPECTED |
+5326.1s 467 lm_head.layer_norm.bias         | UNEXPECTED |
+5326.1s 468 lm_head.dense.bias              | UNEXPECTED |
+5326.1s 469 lm_head.dense.weight            | UNEXPECTED |
+5326.1s 470 roberta.embeddings.position_ids | UNEXPECTED |
+5326.1s 471 lm_head.layer_norm.weight       | UNEXPECTED |
+5326.1s 472 pooler.dense.bias               | MISSING    |
+5326.1s 473 pooler.dense.weight             | MISSING    |
+5326.1s 474 
+5326.1s 475 Notes:
+5326.1s 476 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5326.1s 477 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5326.1s 478 
+5326.1s 479 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base
+5326.1s 480 Key                             | Status     |
+5326.1s 481 --------------------------------+------------+-
+5326.1s 482 lm_head.bias                    | UNEXPECTED |
+5326.1s 483 lm_head.layer_norm.bias         | UNEXPECTED |
+5326.1s 484 lm_head.dense.bias              | UNEXPECTED |
+5326.1s 485 lm_head.dense.weight            | UNEXPECTED |
+5326.1s 486 roberta.embeddings.position_ids | UNEXPECTED |
+5326.1s 487 lm_head.layer_norm.weight       | UNEXPECTED |
+5326.1s 488 pooler.dense.bias               | MISSING    |
+5326.1s 489 pooler.dense.weight             | MISSING    |
+5326.1s 490 
+5326.1s 491 Notes:
+5326.1s 492 - UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+5326.1s 493 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5356.2s 494 {'embedding': 'BASE', 'seed': 42, 'split': 'holdout', 'n': 8000}
+5357.3s 495 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5357.3s 496 Key                 | Status  |
+5357.3s 497 --------------------+---------+-
+5357.3s 498 pooler.dense.bias   | MISSING |
+5357.3s 499 pooler.dense.weight | MISSING |
+5357.3s 500 
+5357.3s 501 Notes:
+5357.3s 502 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5357.3s 503 
+5357.3s 504 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5357.3s 505 Key                 | Status  |
+5357.3s 506 --------------------+---------+-
+5357.3s 507 pooler.dense.bias   | MISSING |
+5357.3s 508 pooler.dense.weight | MISSING |
+5357.3s 509 
+5357.3s 510 Notes:
+5357.3s 511 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5378.4s 512 {'embedding': 'DAPT', 'seed': 42, 'split': 'train', 'n': 4000}
+5378.9s 513 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5378.9s 514 Key                 | Status  |
+5378.9s 515 --------------------+---------+-
+5378.9s 516 pooler.dense.bias   | MISSING |
+5378.9s 517 pooler.dense.weight | MISSING |
+5378.9s 518 
+5378.9s 519 Notes:
+5378.9s 520 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5378.9s 521 
+5378.9s 522 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5378.9s 523 Key                 | Status  |
+5378.9s 524 --------------------+---------+-
+5378.9s 525 pooler.dense.bias   | MISSING |
+5378.9s 526 pooler.dense.weight | MISSING |
+5378.9s 527 
+5378.9s 528 Notes:
+5378.9s 529 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5384.3s 530 {'embedding': 'DAPT', 'seed': 42, 'split': 'calibration', 'n': 1307}
+5384.7s 531 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5384.7s 532 Key                 | Status  |
+5384.7s 533 --------------------+---------+-
+5384.7s 534 pooler.dense.bias   | MISSING |
+5384.7s 535 pooler.dense.weight | MISSING |
+5384.7s 536 
+5384.7s 537 Notes:
+5384.7s 538 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5384.7s 539 
+5384.7s 540 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5384.7s 541 Key                 | Status  |
+5384.7s 542 --------------------+---------+-
+5384.7s 543 pooler.dense.bias   | MISSING |
+5384.7s 544 pooler.dense.weight | MISSING |
+5384.7s 545 
+5384.7s 546 Notes:
+5384.7s 547 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5396.7s 548 {'embedding': 'DAPT', 'seed': 42, 'split': 'iid', 'n': 3051}
+5397.1s 549 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5397.1s 550 Key                 | Status  |
+5397.1s 551 --------------------+---------+-
+5397.1s 552 pooler.dense.bias   | MISSING |
+5397.1s 553 pooler.dense.weight | MISSING |
+5397.1s 554 
+5397.1s 555 Notes:
+5397.1s 556 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5397.1s 557 
+5397.1s 558 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42
+5397.1s 559 Key                 | Status  |
+5397.1s 560 --------------------+---------+-
+5397.1s 561 pooler.dense.bias   | MISSING |
+5397.1s 562 pooler.dense.weight | MISSING |
+5397.1s 563 
+5397.1s 564 Notes:
+5397.1s 565 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5427.1s 566 {'embedding': 'DAPT', 'seed': 42, 'split': 'holdout', 'n': 8000}
+5428.1s 567 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5428.1s 568 Key                 | Status  |
+5428.1s 569 --------------------+---------+-
+5428.1s 570 pooler.dense.bias   | MISSING |
+5428.1s 571 pooler.dense.weight | MISSING |
+5428.1s 572 
+5428.1s 573 Notes:
+5428.1s 574 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5428.1s 575 
+5428.1s 576 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5428.1s 577 Key                 | Status  |
+5428.1s 578 --------------------+---------+-
+5428.1s 579 pooler.dense.bias   | MISSING |
+5428.1s 580 pooler.dense.weight | MISSING |
+5428.1s 581 
+5428.1s 582 Notes:
+5428.1s 583 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5449.1s 584 {'embedding': 'DAPT', 'seed': 52, 'split': 'train', 'n': 4000}
+5449.5s 585 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5449.5s 586 Key                 | Status  |
+5449.5s 587 --------------------+---------+-
+5449.5s 588 pooler.dense.bias   | MISSING |
+5449.5s 589 pooler.dense.weight | MISSING |
+5449.5s 590 
+5449.5s 591 Notes:
+5449.5s 592 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5449.5s 593 
+5449.5s 594 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5449.5s 595 Key                 | Status  |
+5449.5s 596 --------------------+---------+-
+5449.5s 597 pooler.dense.bias   | MISSING |
+5449.5s 598 pooler.dense.weight | MISSING |
+5449.5s 599 
+5449.5s 600 Notes:
+5449.5s 601 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5454.8s 602 {'embedding': 'DAPT', 'seed': 52, 'split': 'calibration', 'n': 1307}
+5455.2s 603 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5455.2s 604 Key                 | Status  |
+5455.2s 605 --------------------+---------+-
+5455.2s 606 pooler.dense.bias   | MISSING |
+5455.2s 607 pooler.dense.weight | MISSING |
+5455.2s 608 
+5455.2s 609 Notes:
+5455.2s 610 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5455.2s 611 
+5455.2s 612 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5455.2s 613 Key                 | Status  |
+5455.2s 614 --------------------+---------+-
+5455.2s 615 pooler.dense.bias   | MISSING |
+5455.2s 616 pooler.dense.weight | MISSING |
+5455.2s 617 
+5455.2s 618 Notes:
+5455.2s 619 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5467.3s 620 {'embedding': 'DAPT', 'seed': 52, 'split': 'iid', 'n': 3051}
+5467.7s 621 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5467.7s 622 Key                 | Status  |
+5467.7s 623 --------------------+---------+-
+5467.7s 624 pooler.dense.bias   | MISSING |
+5467.7s 625 pooler.dense.weight | MISSING |
+5467.7s 626 
+5467.7s 627 Notes:
+5467.7s 628 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5467.7s 629 
+5467.7s 630 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52
+5467.7s 631 Key                 | Status  |
+5467.7s 632 --------------------+---------+-
+5467.7s 633 pooler.dense.bias   | MISSING |
+5467.7s 634 pooler.dense.weight | MISSING |
+5467.7s 635 
+5467.7s 636 Notes:
+5467.7s 637 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5498.3s 638 {'embedding': 'DAPT', 'seed': 52, 'split': 'holdout', 'n': 8000}
+5499.1s 639 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5499.1s 640 Key                 | Status  |
+5499.1s 641 --------------------+---------+-
+5499.1s 642 pooler.dense.bias   | MISSING |
+5499.1s 643 pooler.dense.weight | MISSING |
+5499.1s 644 
+5499.1s 645 Notes:
+5499.1s 646 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5499.1s 647 
+5499.1s 648 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5499.1s 649 Key                 | Status  |
+5499.1s 650 --------------------+---------+-
+5499.1s 651 pooler.dense.bias   | MISSING |
+5499.1s 652 pooler.dense.weight | MISSING |
+5499.1s 653 
+5499.1s 654 Notes:
+5499.1s 655 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5519.9s 656 {'embedding': 'DAPT', 'seed': 62, 'split': 'train', 'n': 4000}
+5520.3s 657 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5520.3s 658 Key                 | Status  |
+5520.3s 659 --------------------+---------+-
+5520.3s 660 pooler.dense.bias   | MISSING |
+5520.3s 661 pooler.dense.weight | MISSING |
+5520.3s 662 
+5520.3s 663 Notes:
+5520.3s 664 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5520.3s 665 
+5520.3s 666 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5520.3s 667 Key                 | Status  |
+5520.3s 668 --------------------+---------+-
+5520.3s 669 pooler.dense.bias   | MISSING |
+5520.3s 670 pooler.dense.weight | MISSING |
+5520.3s 671 
+5520.3s 672 Notes:
+5520.3s 673 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5525.5s 674 {'embedding': 'DAPT', 'seed': 62, 'split': 'calibration', 'n': 1307}
+5525.9s 675 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5525.9s 676 Key                 | Status  |
+5525.9s 677 --------------------+---------+-
+5525.9s 678 pooler.dense.bias   | MISSING |
+5525.9s 679 pooler.dense.weight | MISSING |
+5525.9s 680 
+5525.9s 681 Notes:
+5525.9s 682 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5525.9s 683 
+5525.9s 684 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5525.9s 685 Key                 | Status  |
+5525.9s 686 --------------------+---------+-
+5525.9s 687 pooler.dense.bias   | MISSING |
+5525.9s 688 pooler.dense.weight | MISSING |
+5525.9s 689 
+5525.9s 690 Notes:
+5525.9s 691 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5537.9s 692 {'embedding': 'DAPT', 'seed': 62, 'split': 'iid', 'n': 3051}
+5538.3s 693 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5538.3s 694 Key                 | Status  |
+5538.3s 695 --------------------+---------+-
+5538.3s 696 pooler.dense.bias   | MISSING |
+5538.3s 697 pooler.dense.weight | MISSING |
+5538.3s 698 
+5538.3s 699 Notes:
+5538.3s 700 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5538.3s 701 
+5538.3s 702 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62
+5538.3s 703 Key                 | Status  |
+5538.3s 704 --------------------+---------+-
+5538.3s 705 pooler.dense.bias   | MISSING |
+5538.3s 706 pooler.dense.weight | MISSING |
+5538.3s 707 
+5538.3s 708 Notes:
+5538.3s 709 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5568.8s 710 {'embedding': 'DAPT', 'seed': 62, 'split': 'holdout', 'n': 8000}
+5569.7s 711 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5569.7s 712 Key                 | Status  |
+5569.7s 713 --------------------+---------+-
+5569.7s 714 pooler.dense.bias   | MISSING |
+5569.7s 715 pooler.dense.weight | MISSING |
+5569.7s 716 
+5569.7s 717 Notes:
+5569.7s 718 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5569.7s 719 
+5569.7s 720 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5569.7s 721 Key                 | Status  |
+5569.7s 722 --------------------+---------+-
+5569.7s 723 pooler.dense.bias   | MISSING |
+5569.7s 724 pooler.dense.weight | MISSING |
+5569.7s 725 
+5569.7s 726 Notes:
+5569.7s 727 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5590.2s 728 {'embedding': 'DAPT', 'seed': 72, 'split': 'train', 'n': 4000}
+5590.6s 729 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5590.6s 730 Key                 | Status  |
+5590.6s 731 --------------------+---------+-
+5590.6s 732 pooler.dense.bias   | MISSING |
+5590.6s 733 pooler.dense.weight | MISSING |
+5590.6s 734 
+5590.6s 735 Notes:
+5590.6s 736 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5590.6s 737 
+5590.6s 738 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5590.6s 739 Key                 | Status  |
+5590.6s 740 --------------------+---------+-
+5590.6s 741 pooler.dense.bias   | MISSING |
+5590.6s 742 pooler.dense.weight | MISSING |
+5590.6s 743 
+5590.6s 744 Notes:
+5590.6s 745 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5595.9s 746 {'embedding': 'DAPT', 'seed': 72, 'split': 'calibration', 'n': 1307}
+5596.3s 747 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5596.3s 748 Key                 | Status  |
+5596.3s 749 --------------------+---------+-
+5596.3s 750 pooler.dense.bias   | MISSING |
+5596.3s 751 pooler.dense.weight | MISSING |
+5596.3s 752 
+5596.3s 753 Notes:
+5596.3s 754 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5596.3s 755 
+5596.3s 756 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5596.3s 757 Key                 | Status  |
+5596.3s 758 --------------------+---------+-
+5596.3s 759 pooler.dense.bias   | MISSING |
+5596.3s 760 pooler.dense.weight | MISSING |
+5596.3s 761 
+5596.3s 762 Notes:
+5596.3s 763 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5608.3s 764 {'embedding': 'DAPT', 'seed': 72, 'split': 'iid', 'n': 3051}
+5608.7s 765 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5608.7s 766 Key                 | Status  |
+5608.7s 767 --------------------+---------+-
+5608.7s 768 pooler.dense.bias   | MISSING |
+5608.7s 769 pooler.dense.weight | MISSING |
+5608.7s 770 
+5608.7s 771 Notes:
+5608.7s 772 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5608.7s 773 
+5608.7s 774 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72
+5608.7s 775 Key                 | Status  |
+5608.7s 776 --------------------+---------+-
+5608.7s 777 pooler.dense.bias   | MISSING |
+5608.7s 778 pooler.dense.weight | MISSING |
+5608.7s 779 
+5608.7s 780 Notes:
+5608.7s 781 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5639.2s 782 {'embedding': 'DAPT', 'seed': 72, 'split': 'holdout', 'n': 8000}
+5640.0s 783 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5640.0s 784 Key                 | Status  |
+5640.0s 785 --------------------+---------+-
+5640.0s 786 pooler.dense.bias   | MISSING |
+5640.0s 787 pooler.dense.weight | MISSING |
+5640.0s 788 
+5640.0s 789 Notes:
+5640.0s 790 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5640.0s 791 
+5640.0s 792 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5640.0s 793 Key                 | Status  |
+5640.0s 794 --------------------+---------+-
+5640.0s 795 pooler.dense.bias   | MISSING |
+5640.0s 796 pooler.dense.weight | MISSING |
+5640.0s 797 
+5640.0s 798 Notes:
+5640.0s 799 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5660.8s 800 {'embedding': 'DAPT', 'seed': 82, 'split': 'train', 'n': 4000}
+5661.3s 801 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5661.3s 802 Key                 | Status  |
+5661.3s 803 --------------------+---------+-
+5661.3s 804 pooler.dense.bias   | MISSING |
+5661.3s 805 pooler.dense.weight | MISSING |
+5661.3s 806 
+5661.3s 807 Notes:
+5661.3s 808 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5661.3s 809 
+5661.3s 810 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5661.3s 811 Key                 | Status  |
+5661.3s 812 --------------------+---------+-
+5661.3s 813 pooler.dense.bias   | MISSING |
+5661.3s 814 pooler.dense.weight | MISSING |
+5661.3s 815 
+5661.3s 816 Notes:
+5661.3s 817 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5666.5s 818 {'embedding': 'DAPT', 'seed': 82, 'split': 'calibration', 'n': 1307}
+5666.9s 819 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5666.9s 820 Key                 | Status  |
+5666.9s 821 --------------------+---------+-
+5666.9s 822 pooler.dense.bias   | MISSING |
+5666.9s 823 pooler.dense.weight | MISSING |
+5666.9s 824 
+5666.9s 825 Notes:
+5666.9s 826 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5666.9s 827 
+5666.9s 828 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5666.9s 829 Key                 | Status  |
+5666.9s 830 --------------------+---------+-
+5666.9s 831 pooler.dense.bias   | MISSING |
+5666.9s 832 pooler.dense.weight | MISSING |
+5666.9s 833 
+5666.9s 834 Notes:
+5666.9s 835 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5678.9s 836 {'embedding': 'DAPT', 'seed': 82, 'split': 'iid', 'n': 3051}
+5679.3s 837 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5679.3s 838 Key                 | Status  |
+5679.3s 839 --------------------+---------+-
+5679.3s 840 pooler.dense.bias   | MISSING |
+5679.3s 841 pooler.dense.weight | MISSING |
+5679.3s 842 
+5679.3s 843 Notes:
+5679.3s 844 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5679.3s 845 
+5679.3s 846 RobertaModel LOAD REPORT from: /kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82
+5679.3s 847 Key                 | Status  |
+5679.3s 848 --------------------+---------+-
+5679.3s 849 pooler.dense.bias   | MISSING |
+5679.3s 850 pooler.dense.weight | MISSING |
+5679.3s 851 
+5679.3s 852 Notes:
+5679.3s 853 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+5709.7s 854 {'embedding': 'DAPT', 'seed': 82, 'split': 'holdout', 'n': 8000}
+5724.8s 855 {'embedding': 'CONTRASTIVE', 'seed': 42, 'split': 'train', 'n': 4000}
+5730.3s 856 {'embedding': 'CONTRASTIVE', 'seed': 42, 'split': 'calibration', 'n': 1307}
+5742.1s 857 {'embedding': 'CONTRASTIVE', 'seed': 42, 'split': 'iid', 'n': 3051}
+5772.6s 858 {'embedding': 'CONTRASTIVE', 'seed': 42, 'split': 'holdout', 'n': 8000}
+5787.8s 859 {'embedding': 'CONTRASTIVE', 'seed': 52, 'split': 'train', 'n': 4000}
+5793.4s 860 {'embedding': 'CONTRASTIVE', 'seed': 52, 'split': 'calibration', 'n': 1307}
+5805.2s 861 {'embedding': 'CONTRASTIVE', 'seed': 52, 'split': 'iid', 'n': 3051}
+5835.5s 862 {'embedding': 'CONTRASTIVE', 'seed': 52, 'split': 'holdout', 'n': 8000}
+5850.9s 863 {'embedding': 'CONTRASTIVE', 'seed': 62, 'split': 'train', 'n': 4000}
+5856.5s 864 {'embedding': 'CONTRASTIVE', 'seed': 62, 'split': 'calibration', 'n': 1307}
+5868.5s 865 {'embedding': 'CONTRASTIVE', 'seed': 62, 'split': 'iid', 'n': 3051}
+5898.9s 866 {'embedding': 'CONTRASTIVE', 'seed': 62, 'split': 'holdout', 'n': 8000}
+5914.1s 867 {'embedding': 'CONTRASTIVE', 'seed': 72, 'split': 'train', 'n': 4000}
+5919.7s 868 {'embedding': 'CONTRASTIVE', 'seed': 72, 'split': 'calibration', 'n': 1307}
+5931.6s 869 {'embedding': 'CONTRASTIVE', 'seed': 72, 'split': 'iid', 'n': 3051}
+5961.9s 870 {'embedding': 'CONTRASTIVE', 'seed': 72, 'split': 'holdout', 'n': 8000}
+5977.2s 871 {'embedding': 'CONTRASTIVE', 'seed': 82, 'split': 'train', 'n': 4000}
+5982.9s 872 {'embedding': 'CONTRASTIVE', 'seed': 82, 'split': 'calibration', 'n': 1307}
+5994.8s 873 {'embedding': 'CONTRASTIVE', 'seed': 82, 'split': 'iid', 'n': 3051}
+6025.1s 874 {'embedding': 'CONTRASTIVE', 'seed': 82, 'split': 'holdout', 'n': 8000}
+6025.1s 875 Embedding-Cache vollständig.
+6025.2s 876 seed  budget    n  benign  phish
+6025.2s 877 42    0.10  400     200    200
+6025.2s 878 42    0.25 1000     500    500
+6025.2s 879 42    1.00 4000    2000   2000
+6025.2s 880 52    0.10  400     200    200
+6025.2s 881 52    0.25 1000     500    500
+6025.2s 882 52    1.00 4000    2000   2000
+6025.2s 883 62    0.10  400     200    200
+6025.2s 884 62    0.25 1000     500    500
+6025.2s 885 62    1.00 4000    2000   2000
+6025.2s 886 72    0.10  400     200    200
+6025.2s 887 72    0.25 1000     500    500
+6025.2s 888 72    1.00 4000    2000   2000
+6025.2s 889 82    0.10  400     200    200
+6025.2s 890 82    0.25 1000     500    500
+6025.2s 891 82    1.00 4000    2000   2000
+6043.6s 892 {'classifier': 'LOGREG', 'best_mean_cv_ap': 0.9786736026622321, 'params': {'C': 0.1}}
+6427.7s 893 {'classifier': 'XGBOOST', 'best_mean_cv_ap': 0.9797682427885029, 'params': {'n_estimators': 400, 'max_depth': 4, 'learning_rate': 0.1, 'min_child_weight': 2}}
+6472.4s 894 {'classifier': 'MLP', 'best_mean_cv_ap': 0.9837047281226791, 'params': {'hidden_layer_sizes': (256, 64), 'alpha': 0.0001}}
+6473.1s 895 {'done': ('BASE', 'LOGREG', 42, 0.1), 'rows': 5, 'threshold': 0.993383}
+6476.3s 896 Traceback (most recent call last):
+6476.3s 897 File "<string>", line 1, in <module>
+6476.3s 898 File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 131, in execute_notebook
+6476.3s 899 raise_for_execution_errors(nb, output_path)
+6476.3s 900 File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+6476.3s 901 raise error
+6476.3s 902 papermill.exceptions.PapermillExecutionError:
+6476.3s 903 ---------------------------------------------------------------------------
+6476.3s 904 Exception encountered at "In [10]":
+6476.3s 905 ---------------------------------------------------------------------------
+6476.3s 906 NameError                                 Traceback (most recent call last)
+6476.3s 907 /tmp/ipykernel_23/2567274191.py in <cell line: 0>()
+6476.3s 908 60                     t0=time.perf_counter()
+6476.3s 909 61                     model=build_classifier(kind,BEST_PARAMS[kind],seed)
+6476.3s 910 ---> 62                     model.fit(Xtrain,yb)
+6476.3s 911 63                     fit_seconds=time.perf_counter()-t0
+6476.3s 912 64
+6476.3s 913 
+6476.3s 914 NameError: name 'Xtrain' is not defined
+6476.3s 915 
+6478.7s 916 /usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+6478.7s 917 cells[i][c] = re.sub('\\\\\|', '|', cell)
+6478.9s 918 /usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+6478.9s 919 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+6479.5s 920 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+6480.0s 921 [NbConvertApp] Writing 761459 bytes to __notebook__.ipynb
+6482.4s 922 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+6483.5s 923 [NbConvertApp] Writing 1113014 bytes to __results__.html

@@ -1,0 +1,39 @@
+{
+  "status": "COMPLETE",
+  "run": "PRODUCTIVE_LOOP_FINISH_ONLY_SSL_REFRESH",
+  "source_loop": "/kaggle/input/datasets/sophiahofmann/lpppll",
+  "source_n10": "/kaggle/input/datasets/sophiahofmann/activelearning",
+  "seeds": [
+    42,
+    52,
+    62,
+    72,
+    82,
+    242,
+    252,
+    262,
+    272,
+    282
+  ],
+  "primary_target_fpr": 0.005,
+  "primary_review_fraction": 0.2,
+  "scientific_role": "explorative lifecycle extension; primary SSL generalization evidence remains the frozen N10 T0-vs-DAPT study",
+  "ssl_refresh": {
+    "objective": "TAPT-like continued MLM",
+    "pool": "remaining unlabeled original TRAIN rows",
+    "labels_used": false,
+    "evaluation_data_used": false
+  },
+  "checks": {
+    "old_loop_retrained": false,
+    "n10_retrained": false,
+    "old_static_states_validated": 10,
+    "refreshed_scores": 10,
+    "ssl_refresh_ablation_rows": 1080,
+    "statistics_rows": 72,
+    "performance_based_seed_exclusions": [],
+    "ssl_refresh_uses_labels": false,
+    "ssl_refresh_uses_evaluation_data": false,
+    "e2e_uses_same_25pct_AL_labels_as_static_loop": true
+  }
+}
