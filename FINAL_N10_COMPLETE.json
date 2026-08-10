@@ -1,0 +1,88 @@
+{
+  "status": "COMPLETE",
+  "run": "FINAL_BACHELOR_N10_PRUEFSICHER",
+  "original_seeds": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "replication_seeds": [
+    242,
+    252,
+    262,
+    272,
+    282
+  ],
+  "pooled_seeds": [
+    42,
+    52,
+    62,
+    72,
+    82,
+    242,
+    252,
+    262,
+    272,
+    282
+  ],
+  "performance_based_seed_exclusions": [],
+  "previously_exposed_requested_not_used_as_fresh": [
+    202,
+    212,
+    222,
+    232
+  ],
+  "systems": [
+    "STRUCT_LOGREG",
+    "B0_STRUCT_XGB",
+    "STRUCT_MLP",
+    "BASE_LOGREG",
+    "BASE_XGBOOST",
+    "BASE_MLP",
+    "DAPT_LOGREG",
+    "DAPT_XGBOOST",
+    "DAPT_MLP",
+    "CONTRASTIVE_LOGREG",
+    "CONTRASTIVE_XGBOOST",
+    "CONTRASTIVE_MLP",
+    "T0_E2E",
+    "DAPT_E2E"
+  ],
+  "feature_spaces": [
+    "STRUCT",
+    "BASE",
+    "DAPT",
+    "CONTRASTIVE"
+  ],
+  "classifiers": [
+    "LOGREG",
+    "XGBOOST",
+    "MLP"
+  ],
+  "cascade_stage1": [
+    "B0_STRUCT_XGB",
+    "BASE_XGBOOST"
+  ],
+  "statistics_groups": [
+    "ORIGINAL5",
+    "REPLICATION5",
+    "POOLED10"
+  ],
+  "min_exact_two_sided_p_n5": 0.0625,
+  "min_exact_two_sided_p_n10": 0.001953125,
+  "active_learning": "exploratory",
+  "checks": {
+    "systems": 14,
+    "seeds": 10,
+    "master_expected": 7560,
+    "master_actual": 7560,
+    "al_expected": 17280,
+    "al_actual": 17280,
+    "new_dapt_encoders": 5,
+    "new_contrastive_encoders": 5,
+    "tables": 8,
+    "figures_png": 19
+  }
+}

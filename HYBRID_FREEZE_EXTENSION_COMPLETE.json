@@ -1,0 +1,51 @@
+{
+  "status": "COMPLETE",
+  "purpose": "FINAL FREEZE extension: FPR + AP correction + 25pct systems/cascade/error analysis",
+  "seeds": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "label_budgets": [
+    0.1,
+    0.25,
+    1.0
+  ],
+  "system_label_budget": 0.25,
+  "target_fprs": [
+    0.005,
+    0.01,
+    0.02
+  ],
+  "primary_target_fpr": 0.005,
+  "scenarios": [
+    "IID_ORIGINAL",
+    "IID_BALANCED",
+    "TEMPORAL",
+    "DOMAIN_OOD",
+    "TEMPLATE_OOD",
+    "DOMAIN_TEMPLATE_OOD"
+  ],
+  "ap_primary_reference": "IID_BALANCED (50/50 prevalence matched)",
+  "ap_equal_n_sensitivity_n": 2116,
+  "system_models": [
+    "B0_STRUCT_XGB",
+    "T0_E2E",
+    "DAPT_E2E",
+    "BASE_EMB_MLP",
+    "DAPT_EMB_MLP",
+    "CONTRASTIVE_EMB_MLP"
+  ],
+  "e2e": {
+    "epochs": 5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_length": 256,
+    "dapt_pretraining_repeated": false
+  },
+  "holdout_used_for_training": false,
+  "holdout_used_for_threshold_selection": false
+}

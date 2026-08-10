@@ -1,0 +1,19 @@
+FINAL N10 – KAGGLE INPUTS
+
+Wie beim vorherigen Final-Lauf anhängen:
+1. endgame
+2. hbhghghg / kompletter FINAL-FREEZE-Output mit embeddings, tokens und best_classifier_params.json
+3. ijhuioo / roberta-base
+4. phreshphish_hybrid_freeze_extension.zip bzw. erfolgreicher Hybrid-Output
+
+Optional für Resume: einen vorherigen phreshphish_FINAL_BACHELOR_N10-Output als Input anhängen.
+
+Finale Seeds:
+Original5: 42,52,62,72,82
+Replication5: 242,252,262,272,282
+Pooled10: alle zehn
+
+202,212,222,232 werden bewusst nicht als frische Replikationsseeds verwendet, weil sie bereits in Phase 5F liefen.
+
+Am Ende muss FINAL_N10_COMPLETE.json status COMPLETE enthalten.
+Output-ZIP: /kaggle/working/phreshphish_FINAL_BACHELOR_N10.zip

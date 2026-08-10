@@ -1,0 +1,62 @@
+{
+  "freeze_version": "2026-08-08-final",
+  "representations": [
+    "BASE",
+    "DAPT",
+    "CONTRASTIVE"
+  ],
+  "classifiers": [
+    "LOGREG",
+    "XGBOOST",
+    "MLP"
+  ],
+  "seeds": [
+    42,
+    52,
+    62,
+    72,
+    82
+  ],
+  "label_budgets": [
+    0.1,
+    0.25,
+    1.0
+  ],
+  "scenarios": [
+    "IID",
+    "TEMPORAL",
+    "DOMAIN_OOD",
+    "TEMPLATE_OOD",
+    "DOMAIN_TEMPLATE_OOD"
+  ],
+  "target_fpr": 0.005,
+  "max_length": 256,
+  "calibration_fraction": 0.3,
+  "contrastive": {
+    "method": "unsupervised SimCSE-style dropout views",
+    "epochs": 1,
+    "batch_size": 16,
+    "lr": 1e-05,
+    "temperature": 0.05,
+    "labels_used": false
+  },
+  "best_classifier_params": {
+    "LOGREG": {
+      "C": 0.1
+    },
+    "XGBOOST": {
+      "n_estimators": 400,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "min_child_weight": 2
+    },
+    "MLP": {
+      "hidden_layer_sizes": [
+        256,
+        64
+      ],
+      "alpha": 0.0001
+    }
+  },
+  "active_learning_core": false
+}

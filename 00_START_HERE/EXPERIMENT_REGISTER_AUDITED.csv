@@ -1,0 +1,8 @@
+﻿ID;Experiment;Canonical_Notebook;Status;Completion_Evidence;Role
+E01;Core Representation Freeze;phreshphish_final_freeze_evaluation_v5_resume.ipynb;FINAL COMPLETE;FINAL_FREEZE_COMPLETE.json;"Core BASE/DAPT/Contrastive; frozen probes"
+E02;Hybrid System Extension 5-Seed;phreshphish_hybrid_freeze_extension_fpr_apfix_v3_resume.ipynb;COMPLETE SUPPORT;HYBRID_FREEZE_EXTENSION_COMPLETE.json;"Vorstufe/Support; N10 supersedes duplicate claims"
+E03;FINAL N10 Prüfsicher;phreshphish_FINAL_BACHELOR_RUN_N10_PRUEFSICHER.ipynb;PRIMARY FINAL COMPLETE;FINAL_N10_COMPLETE.json;Hauptquelle für System, Low-FPR, Shift, Kaskade, N10
+E04;Productive Cascade + Active Learning;phreshphish_PRODUCTIVE_CASCADE_AL_SSL_LOOP.ipynb;"AL PART COMPLETE; OPTIONAL REFRESH FAILED LATER";LOOP CSVs + selection/state cache;"AL-Ergebnisse gültig; SSL-refresh separat E05"
+E05;SSL Refresh Ablation;phreshphish_PRODUCTIVE_LOOP_FINISH_ONLY_v2_FLAT_KAGGLE.ipynb;FINAL SUPPORT COMPLETE;PRODUCTIVE_FINISH_ONLY_COMPLETE.json;Nur Zusatzablation
+E06;AL×SSL Original10;phreshphish_AL_SSL_INTERACTION_N10_FAST_3H30_v2_BUDGETKEY_FIX.ipynb;FINAL SUPPORT COMPLETE;AL_SSL_INTERACTION_COMPLETE.json;Original10 Difference-in-Differences
+E07;Independent Replication10;phreshphish_AL_SSL_INTERACTION_INDEPENDENT_REPLICATION10.ipynb;RUNNING;pending;"Neue Seeds 302..392; nach Abschluss separat berichten"

@@ -1,0 +1,486 @@
+# FINAL FREEZE – Bachelorarbeit Phishing-Webseitenerkennung
+
+## 1. Zentrale Idee der Arbeit
+
+Die Arbeit untersucht **Self-Supervised Representation Learning zur robusten Erkennung von Phishing-Webseiten**.
+
+Ausgangspunkt ist das Problem, dass sich Phishing-Webseiten hinsichtlich Inhalt, Struktur und Erscheinungsform verändern. Modelle, die ausschließlich anhand bereits gelabelter Beispiele trainiert werden, müssen deshalb auf bislang ungesehene Webseiten und veränderte Datenverteilungen generalisieren.
+
+Gleichzeitig stehen Webdaten in deutlich größerem Umfang ungelabelt als zuverlässig gelabelt zur Verfügung.
+
+Die zentrale Idee besteht daher darin, **ungelabelte Webdaten mittels Self-Supervised Learning (SSL) zur Erlernung domänenspezifischer Repräsentationen zu nutzen** und anschließend empirisch zu untersuchen, ob und unter welchen Bedingungen diese Repräsentationen die Phishing-Klassifikation unterstützen.
+
+Der wissenschaftliche Schwerpunkt liegt ausdrücklich **nicht auf dem Vergleich einzelner Klassifikatoren**, sondern auf dem Nutzen der mittels SSL erlernten Repräsentationen.
+
+---
+
+## 2. Forschungsgegenstand
+
+**Forschungsgegenstand:**
+
+Self-Supervised Representation Learning für die automatisierte Phishing-Webseitenerkennung.
+
+Untersucht werden insbesondere:
+
+* Nutzen selbstüberwachter Repräsentationen für die nachgelagerte Klassifikation,
+* Generalisierung unter Distribution Shift,
+* Abhängigkeit des SSL-Nutzens vom verwendeten Downstream-Klassifikator,
+* Verhalten bei unterschiedlicher Verfügbarkeit gelabelter Trainingsdaten.
+
+---
+
+## 3. Zentrale Forschungsfrage
+
+**Wie beeinflusst Self-Supervised Representation Learning die Generalisierungsfähigkeit von Verfahren zur automatisierten Erkennung bisher ungesehener Phishing-Webseiten?**
+
+Die Fragestellung ist bewusst ergebnisoffen formuliert. Es wird nicht vorausgesetzt, dass SSL in jedem Szenario eine Verbesserung erzielt.
+
+---
+
+## 4. Untergeordnete Forschungsfragen
+
+### FF1 – Nutzen der Repräsentation
+
+**Wie unterscheiden sich selbstüberwacht erlernte und nicht zusätzlich selbstüberwacht angepasste Repräsentationen hinsichtlich ihrer Eignung für die Phishing-Klassifikation?**
+
+Hierzu werden mindestens folgende Repräsentationen betrachtet:
+
+* Baseline-Repräsentation ohne zusätzliches domänenspezifisches SSL,
+* Repräsentation nach Domain-Adaptive Pretraining mittels Masked Language Modeling,
+* kontrastiv erlernte Repräsentation.
+
+Der Vergleich von MLM/DAPT und Contrastive Learning ist **kein eigenständiger Hauptzweck der Arbeit**, sondern dient der Untersuchung unterschiedlicher Realisierungen des übergeordneten SSL-Ansatzes.
+
+### FF2 – Generalisierung
+
+**Wie verändert sich der Nutzen selbstüberwacht erlernter Repräsentationen unter zeitlichem und strukturellem Distribution Shift?**
+
+Diese Forschungsfrage bildet den Schwerpunkt der empirischen Evaluation.
+
+Untersucht werden mindestens:
+
+* IID-Evaluation als Referenz,
+* zeitlicher Distribution Shift,
+* struktureller beziehungsweise disjunkter/OOD-Shift.
+
+Neben absoluten Leistungswerten wird insbesondere die Leistungsdegradation gegenüber der IID-Referenz betrachtet.
+
+### FF3 – Verfügbarkeit gelabelter Daten
+
+**Wie verändert sich der Nutzen selbstüberwacht erlernter Repräsentationen bei unterschiedlicher Verfügbarkeit gelabelter Trainingsdaten?**
+
+Dabei wird ausdrücklich **nicht vorausgesetzt**, dass SSL grundsätzlich weniger Labels benötigt als klassische Verfahren.
+
+Vielmehr wird untersucht, unter welchen Labelbudgets und Evaluationsbedingungen ein zusätzlicher Nutzen der selbstüberwachten Repräsentation auftritt oder ausbleibt.
+
+---
+
+## 5. Grundarchitektur
+
+```text
+                     UNGELABELTE WEBDATEN
+                             │
+                             ▼
+                 SELF-SUPERVISED LEARNING
+                    ┌────────┴────────┐
+                    ▼                 ▼
+                MLM / DAPT       Contrastive
+                    │                 │
+                    └────────┬────────┘
+                             ▼
+                    GELERNTE REPRÄSENTATION
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+      Logistic Regression  XGBoost          MLP
+              │              │              │
+              └──────────────┼──────────────┘
+                             ▼
+                    PHISHING / BENIGN
+                             │
+                             ▼
+                       EVALUATION
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+             IID         Temporal        Disjoint /
+                           Shift            OOD
+                             │
+                             ▼
+                      GENERALISIERUNG
+```
+
+---
+
+## 6. Rolle der Downstream-Klassifikatoren
+
+Die Downstream-Klassifikatoren sind **nicht der Forschungsgegenstand**.
+
+Sie dienen als kontrollierte Evaluationsinstrumente, mit denen geprüft wird, ob und in welchem Umfang die erlernten Repräsentationen für die Phishing-Entscheidung nutzbar sind.
+
+Vorgesehen sind:
+
+1. **Logistische Regression**
+
+   * einfacher linearer Klassifikator,
+   * zeigt, wie unmittelbar die Klassen im Repräsentationsraum separierbar sind.
+
+2. **XGBoost**
+
+   * leistungsfähiger nichtlinearer baumbasierter Klassifikator,
+   * dient als starke klassische Downstream-Variante.
+
+3. **Kleines Multi-Layer Perceptron**
+
+   * neuronaler nichtlinearer Klassifikator,
+   * ergänzt die lineare und baumbasierte Perspektive.
+
+Die drei Verfahren werden hinreichend abgestimmt und anschließend für die Vergleiche konsistent eingesetzt.
+
+Damit kann zusätzlich geprüft werden, ob ein beobachteter SSL-Effekt
+
+* über verschiedene Klassifikationsmechanismen hinweg auftritt oder
+* wesentlich vom verwendeten Downstream-Klassifikator abhängt.
+
+Diese Betrachtung ist Teil des Evaluationsdesigns und keine zusätzliche Hauptforschungsfrage.
+
+---
+
+## 7. Zu vergleichende Repräsentationen
+
+### R0 – Baseline
+
+Encoder beziehungsweise Repräsentation ohne zusätzliches domänenspezifisches Self-Supervised Pretraining.
+
+### R1 – MLM/DAPT
+
+Domain-Adaptive Pretraining auf ungelabelten Webdaten mittels Masked Language Modeling.
+
+Die Phishing-Labels werden während dieses Pretrainings nicht verwendet.
+
+### R2 – Contrastive Learning
+
+Selbstüberwachtes kontrastives Repräsentationslernen auf ungelabelten Webdaten.
+
+Die konkrete Bildung positiver und negativer Views beziehungsweise Paare wird literaturbasiert festgelegt.
+
+Insbesondere darf kein unfairer Informationsvorteil gegenüber den übrigen Repräsentationen entstehen.
+
+---
+
+## 8. Experimentelle Grundmatrix
+
+Die erste Untersuchung kombiniert die drei Repräsentationen mit den drei Downstream-Klassifikatoren:
+
+| Repräsentation | Logistische Regression | XGBoost | MLP |
+| -------------- | ---------------------- | ------- | --- |
+| Baseline       | ✓                      | ✓       | ✓   |
+| MLM/DAPT       | ✓                      | ✓       | ✓   |
+| Contrastive    | ✓                      | ✓       | ✓   |
+
+Damit entstehen neun kontrollierte Grundkombinationen.
+
+Der relevante Vergleich erfolgt immer innerhalb desselben Downstream-Klassifikators:
+
+```text
+Baseline → XGBoost
+gegen
+DAPT → XGBoost
+gegen
+Contrastive → XGBoost
+```
+
+und analog für logistische Regression und MLP.
+
+Dadurch wird der zusätzliche Effekt des Repräsentationslernens möglichst klar abgegrenzt.
+
+---
+
+## 9. Gestufte Evaluation
+
+### Stufe 1 – IID-Referenz
+
+Zunächst erfolgt die Evaluation unter einer weitgehend identischen Train-/Test-Verteilung.
+
+Zweck:
+
+* grundlegende Funktionsfähigkeit prüfen,
+* Downstream-Eignung der Repräsentationen bestimmen,
+* Ausgangsniveau für spätere Robustheitsanalysen schaffen.
+
+Die IID-Leistung ist **nicht das zentrale Erfolgskriterium** der Arbeit.
+
+### Stufe 2 – Generalisierung unter Distribution Shift
+
+Anschließend erfolgt die zentrale Untersuchung.
+
+#### Temporal Shift
+
+Training beziehungsweise SSL ausschließlich auf früher verfügbaren Daten und Evaluation auf zeitlich späteren Webseiten.
+
+#### Struktureller beziehungsweise disjunkter/OOD-Shift
+
+Training und Evaluation werden so getrennt, dass stark verwandte Strukturen, Familien, Templates oder andere geeignete Gruppierungsmerkmale nicht gleichzeitig in Train und Test auftreten.
+
+Die genaue Operationalisierung richtet sich nach den tatsächlich im Datensatz verfügbaren und wissenschaftlich begründbaren Metadaten.
+
+### Stufe 3 – Unterschiedliche Labelbudgets
+
+Anschließend wird die Menge der für den überwachten Downstream-Schritt verfügbaren Labels reduziert.
+
+Vorgesehene Größenordnung beispielsweise:
+
+* 10 %
+* 25 %
+* 100 %
+
+Eine zusätzliche sehr kleine Stufe kann aufgenommen werden, sofern sie methodisch sinnvoll und rechnerisch stabil ist.
+
+Die Fragestellung lautet nicht:
+
+„Ist SSL mit wenigen Labels automatisch besser?“
+
+Sondern:
+
+**Wie verändert sich der relative Nutzen der selbstüberwachten Repräsentation mit der verfügbaren Labelmenge?**
+
+---
+
+## 10. Zentrale Auswertungslogik
+
+Nicht ausschließlich absolute Performancewerte vergleichen.
+
+Zusätzlich wird die Leistungsdegradation unter Distribution Shift untersucht.
+
+Beispielsweise:
+
+```text
+ΔTemporal = LeistungIID − LeistungTemporal
+
+ΔOOD = LeistungIID − LeistungOOD
+```
+
+Dadurch kann ein Verfahren beispielsweise auf IID leicht schlechter abschneiden und gleichzeitig unter OOD deutlich robuster sein.
+
+Eine solche Konstellation stellt ein wissenschaftlich relevantes Ergebnis dar.
+
+Der SSL-Nutzen kann entsprechend innerhalb eines konstanten Downstream-Klassifikators betrachtet werden:
+
+```text
+ΔSSL = LeistungSSL − LeistungBaseline
+```
+
+Dieser Effekt wird über
+
+* Downstream-Klassifikatoren,
+* Evaluationsszenarien und
+* Labelbudgets
+
+hinweg analysiert.
+
+---
+
+## 11. Methodische Trennung zur Vermeidung von Leakage
+
+Die Definition der Train-, Validierungs- und Testbereiche erfolgt **vor allen datenabhängigen Trainingsschritten**.
+
+Insbesondere dürfen Daten, die als zeitlich oder strukturell unbekannter Testbereich dienen, nicht zuvor für
+
+* MLM/DAPT,
+* Contrastive Learning,
+* Hyperparameteroptimierung,
+* Klassifikatorselektion
+
+verwendet werden, sofern die jeweilige Generalisierungsaussage eine vollständige Unbekanntheit dieser Daten voraussetzt.
+
+Damit wird verhindert, dass SSL bereits Informationen aus der späteren Testverteilung erhält.
+
+---
+
+## 12. Interpretation möglicher Ergebnisse
+
+Die Arbeit ist nicht davon abhängig, dass SSL gewinnt.
+
+Alle folgenden Resultate wären wissenschaftlich verwertbar:
+
+* SSL verbessert IID und OOD.
+* SSL verbessert nur OOD.
+* SSL verbessert nur bestimmte Downstream-Klassifikatoren.
+* Contrastive Learning ist robuster als MLM.
+* MLM ist robuster als Contrastive Learning.
+* SSL bringt bei vollständiger Labelverfügbarkeit wenig Nutzen, aber bei reduzierten Labels mehr.
+* XGBoost bleibt bei sehr kleinen Labelbudgets überlegen.
+* SSL verliert bei kleinen Labelbudgets seinen Nutzen.
+* Kein SSL-Verfahren verbessert die Generalisierung.
+
+Ziel ist nicht der Nachweis einer vorab gewünschten Überlegenheit, sondern die **Bestimmung der Bedingungen, unter denen selbstüberwacht erlernte Repräsentationen einen Nutzen für die Phishing-Erkennung besitzen oder nicht besitzen**.
+
+---
+
+## 13. Software-Artefakt
+
+Die Eigenleistung wird in Form einer reproduzierbaren und konfigurierbaren Trainings- und Evaluationspipeline umgesetzt.
+
+```text
+CONFIGURATION
+      │
+      ▼
+DATA PREPROCESSING
+      │
+      ▼
+SPLIT GENERATION
+      ├── IID
+      ├── Temporal
+      └── Disjoint / OOD
+      │
+      ▼
+SSL TRAINING
+      ├── none
+      ├── MLM / DAPT
+      └── Contrastive
+      │
+      ▼
+REPRESENTATION EXTRACTION
+      │
+      ▼
+DOWNSTREAM CLASSIFICATION
+      ├── Logistic Regression
+      ├── XGBoost
+      └── MLP
+      │
+      ▼
+EVALUATION
+      ├── Performance
+      ├── Distribution Shift
+      ├── Performance Degradation
+      └── Label-Budget Analysis
+      │
+      ▼
+RESULT ANALYSIS
+```
+
+Das Artefakt dient damit nicht lediglich zur Ausführung einzelner Experimente, sondern bildet den vollständigen reproduzierbaren Untersuchungsprozess ab.
+
+---
+
+## 14. Active Learning
+
+Active Learning ist **kein Self-Supervised Learning** und wird deshalb nicht als gleichberechtigter Forschungsgegenstand behandelt.
+
+Es ist ausschließlich eine mögliche nachgelagerte Erweiterung des Software-Artefakts.
+
+```text
+SSL-Repräsentationsraum
+          │
+          ▼
+bestehender Detektor
+          │
+          ▼
+neue ungelabelte Webseiten
+          │
+          ▼
+Active-Learning-Strategie
+          │
+          ▼
+Auswahl informativer Instanzen
+          │
+          ▼
+manuelle Annotation
+          │
+          ▼
+zukünftige Modellaktualisierung
+```
+
+Falls ausreichend Zeit vorhanden ist, kann prototypisch untersucht werden, ob sich der durch SSL erzeugte Repräsentationsraum zur gezielten Auswahl informativer Webseiten eignet.
+
+Active Learning erhält jedoch
+
+* keine zentrale Forschungsfrage,
+* keinen notwendigen Erfolgsanspruch und
+* keine tragende Rolle für die Beantwortung der Hauptforschungsfrage.
+
+Bei zeitlichen Einschränkungen kann dieser Bestandteil auf eine prototypische Erweiterung beziehungsweise den Ausblick reduziert werden.
+
+---
+
+## 15. Klare Abgrenzung
+
+### Bestandteil der Kernarbeit
+
+* Self-Supervised Representation Learning
+* MLM/DAPT
+* Contrastive Learning
+* Baseline-Repräsentation
+* logistische Regression
+* XGBoost
+* kleines MLP
+* IID-Evaluation
+* zeitlicher Distribution Shift
+* struktureller/disjunkter/OOD-Shift
+* unterschiedliche Labelbudgets
+* Analyse der Performance-Degradation
+* reproduzierbare Softwarepipeline
+
+### Kein eigenständiger Forschungsgegenstand
+
+* „XGBoost gegen Transformer“
+* „Welcher Klassifikator gewinnt?“
+* „MLM gegen Contrastive“ als isolierter Modellwettbewerb
+* Nachweis, dass SSL grundsätzlich Labels einspart
+* Optimierung einzelner Prozentpunkte ohne Bezug zur Forschungsfrage
+
+### Optionale Erweiterung
+
+* Active Learning
+
+---
+
+## 16. Roter Faden der gesamten Arbeit
+
+```text
+Phishing-Webseiten verändern sich
+                │
+                ▼
+Generalisierung auf unbekannte Webseiten
+ist eine zentrale Herausforderung
+                │
+                ▼
+große Mengen Webdaten sind ungelabelt verfügbar
+                │
+                ▼
+Self-Supervised Learning nutzt diese Daten
+ohne Phishing-Labels
+                │
+                ▼
+domänenspezifische Repräsentationen
+                │
+                ▼
+Downstream-Klassifikation
+                │
+                ▼
+Evaluation unter
+IID / Temporal / Disjoint-OOD
+                │
+                ▼
+Messung des Generalisierungsverhaltens
+                │
+                ▼
+Analyse unter verschiedenen Labelbudgets
+                │
+                ▼
+Bestimmung der Bedingungen,
+unter denen SSL einen Nutzen besitzt
+```
+
+---
+
+## 17. Entscheidungsregel für neue Ideen und Experimente
+
+Jede neue Modellvariante, Metrik oder Erweiterung wird künftig anhand einer einzigen Frage bewertet:
+
+**Hilft sie unmittelbar dabei zu bestimmen, ob und unter welchen Bedingungen selbstüberwacht erlernte Repräsentationen die Generalisierung auf bislang ungesehene Phishing-Webseiten beeinflussen?**
+
+* **Ja:** Bestandteil der Kernarbeit prüfen.
+* **Nein:** Nebenexperiment, optionale Erweiterung oder streichen.
+
+Damit bleibt Self-Supervised Representation Learning der eindeutige Forschungsgegenstand und die Arbeit wird nicht durch nachgelagerte Modell- oder Softwarekomponenten verwässert.

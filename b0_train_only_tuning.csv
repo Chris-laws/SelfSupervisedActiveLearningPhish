@@ -1,0 +1,21 @@
+seed,candidate,params,cv_ap
+42,0,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 300}",0.980712809973402
+42,1,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 500}",0.981305448868703
+42,2,"{""learning_rate"": 0.1, ""max_depth"": 4, ""min_child_weight"": 2, ""n_estimators"": 400}",0.9797324460873332
+42,3,"{""learning_rate"": 0.05, ""max_depth"": 5, ""min_child_weight"": 1, ""n_estimators"": 400}",0.9820434645985738
+52,0,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 300}",0.9818682489908374
+52,1,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 500}",0.9825659708087463
+52,2,"{""learning_rate"": 0.1, ""max_depth"": 4, ""min_child_weight"": 2, ""n_estimators"": 400}",0.9836262107690207
+52,3,"{""learning_rate"": 0.05, ""max_depth"": 5, ""min_child_weight"": 1, ""n_estimators"": 400}",0.9860562515806309
+62,0,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 300}",0.9796293971560569
+62,1,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 500}",0.978611917654178
+62,2,"{""learning_rate"": 0.1, ""max_depth"": 4, ""min_child_weight"": 2, ""n_estimators"": 400}",0.9752411475729609
+62,3,"{""learning_rate"": 0.05, ""max_depth"": 5, ""min_child_weight"": 1, ""n_estimators"": 400}",0.9804188559980557
+72,0,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 300}",0.9884450407168895
+72,1,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 500}",0.9893094109360069
+72,2,"{""learning_rate"": 0.1, ""max_depth"": 4, ""min_child_weight"": 2, ""n_estimators"": 400}",0.9882028182857087
+72,3,"{""learning_rate"": 0.05, ""max_depth"": 5, ""min_child_weight"": 1, ""n_estimators"": 400}",0.9893888920622529
+82,0,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 300}",0.986132101453673
+82,1,"{""learning_rate"": 0.05, ""max_depth"": 3, ""min_child_weight"": 1, ""n_estimators"": 500}",0.9862985022109158
+82,2,"{""learning_rate"": 0.1, ""max_depth"": 4, ""min_child_weight"": 2, ""n_estimators"": 400}",0.9835699921874724
+82,3,"{""learning_rate"": 0.05, ""max_depth"": 5, ""min_child_weight"": 1, ""n_estimators"": 400}",0.9856178481889017

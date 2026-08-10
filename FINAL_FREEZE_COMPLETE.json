@@ -1,0 +1,8 @@
+{
+  "status": "COMPLETE",
+  "expected_rows": 675,
+  "actual_rows": 675,
+  "completed_utc": "2026-08-08T21:40:05.898183+00:00",
+  "primary_metric": "average_precision",
+  "operational_target_fpr": 0.005
+}

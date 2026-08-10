@@ -1,0 +1,12 @@
+{
+  "split_cache": "/kaggle/input/datasets/sophiahofmann/endgame/split_roles_and_holdout_cache_v2_ram_safe.pkl",
+  "dapt_bundle": "/kaggle/input/datasets/sophiahofmann/endgame/dapt40k_bundle.pkl",
+  "base_model": "/kaggle/input/datasets/sophiahofmann/ijhuioo/roberta-base",
+  "dapt_encoders": {
+    "42": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_42",
+    "52": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_52",
+    "62": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_62",
+    "72": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_72",
+    "82": "/kaggle/input/datasets/sophiahofmann/endgame/Phase3_results/results/phreshphish_phase3_ssl_output/final_evaluation/dapt_encoders/40k/roberta_L256/seed_82"
+  }
+}

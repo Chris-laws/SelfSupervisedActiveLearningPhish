@@ -1,0 +1,1 @@
+Ergebnisreihenfolge: TABLE01/02 kontrollierte Matrix; TABLE03 Stage-1; TABLE05 Statistik; TABLE04 Kaskade; TABLE06 Active Learning; figure_manifest.csv Abbildungen.
