@@ -1,5 +1,9 @@
 # AL × SSL Interaction N10
 
+Diese Analyse ist explorative/supportende Evidenz zur nachgelagerten
+Active-Learning-Erweiterung. Sie ist keine Forschungsfrage und Active Learning
+ist nicht Self-Supervised Learning.
+
 ## Primärer Test
 Difference-in-Differences:
 (DAPT_Uncertainty - DAPT_Random) - (T0_Uncertainty - T0_Random)

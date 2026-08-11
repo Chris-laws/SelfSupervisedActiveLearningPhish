@@ -2,6 +2,18 @@
 
 Dies ist die auditierte Schreib-/Evidenzstruktur der Bachelorarbeit.
 
+## Verbindliche wissenschaftliche Struktur
+
+Die wissenschaftliche Rahmung ist in `../01_GOVERNANCE/Bachelorarbeit-THEMA.txt`
+eingefroren. Es gibt genau drei untergeordnete Forschungsfragen: FF1
+Repräsentationen, FF2 Distribution Shift / Generalisierung und FF3
+Label-Verfügbarkeit. Es gibt keine FF4.
+
+Kaskade und Active Learning sind nachgelagerte prototypische Erweiterungen des
+Software-Artefakts. Sie dürfen in der Anwendungsauswertung berichtet werden,
+begründen aber keine zusätzliche Forschungsfrage und ersetzen nicht die
+Ableitung der Kernschlussfolgerungen aus FF1-FF3.
+
 ## Wichtiger Unterschied
 - Dieser Ordner enthält **kanonische Notebooks + finale/unterstützende Ergebnisdateien**.
 - Die großen GB-Artefakte werden **nicht dupliziert**, sondern separat unter `REPRO_ASSETS`

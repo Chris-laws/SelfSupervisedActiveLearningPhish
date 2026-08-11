@@ -1,5 +1,11 @@
 # AUDIT – Ist der Bachelor-Ordner vollständig?
 
+## Wissenschaftliche Governance
+Die verbindliche Struktur folgt `../01_GOVERNANCE/Bachelorarbeit-THEMA.txt`:
+genau FF1, FF2 und FF3; keine FF4. Kaskade und Active Learning sind
+nachgelagerte prototypische bzw. explorative Erweiterungen des Software-Artefakts
+und keine eigenständigen Forschungsfragen.
+
 ## Bestätigt lokal vorhanden
 ### Kanonische Notebooks
 - E01 Core Freeze: `v5_resume`
